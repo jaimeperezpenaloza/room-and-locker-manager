@@ -1,5 +1,8 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head, Link, router } from '@inertiajs/react';
+import PrimaryButton from '@/Components/PrimaryButton';
+import { Head, router } from '@inertiajs/react';
+import { Pencil, Trash2, UserPlus } from 'lucide-react';
+import { Link } from '@inertiajs/react';
 
 export default function Index({ auth, users }) {
     const handleDelete = (id) => {
@@ -18,51 +21,64 @@ export default function Index({ auth, users }) {
             }
         >
             <Head title="Users" />
-
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg bg-white">
-                        <div className="p-6 text-gray-900">
-                            <Link
-                                href="/users/create"
-                                className="mb-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-                            >
-                                + New User
-                            </Link>
+                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div className="p-6 bg-white">
 
-                            <table className="min-w-full border mt-4">
-                                <thead>
-                                    <tr className="bg-gray-200 text-left">
-                                        <th className="p-2 border">ID</th>
-                                        <th className="p-2 border">Name</th>
-                                        <th className="p-2 border">Email</th>
-                                        <th className="p-2 border">Actions</th>
+                            {/* Botón Add User */}
+                            <div className="mb-6">
+                                <Link
+                                    href="/users/create"
+                                    className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 px-5 py-3 rounded-md text-white text-sm font-semibold transition"
+                                >
+                                    <UserPlus className="w-5 h-5" />
+                                    Add User
+                                </Link>
+                            </div>
+
+                            {/* Tabla de usuarios */}
+                            <table className="min-w-full divide-y divide-gray-200">
+                                <thead className="bg-gray-100">
+                                    <tr>
+                                        <th className="px-6 py-4 text-left text-base font-semibold text-gray-700">ID</th>
+                                        <th className="px-6 py-4 text-left text-base font-semibold text-gray-700">Name</th>
+                                        <th className="px-6 py-4 text-left text-base font-semibold text-gray-700">Email</th>
+                                        <th className="px-6 py-4 text-left text-base font-semibold text-gray-700">Role</th>
+                                        <th className="px-6 py-4 text-center text-base font-semibold text-gray-700">Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody className="bg-white divide-y divide-gray-200 text-base">
                                     {users.map((user) => (
-                                        <tr key={user.id} className="border-b">
-                                            <td className="p-2 border">{user.id}</td>
-                                            <td className="p-2 border">{user.name}</td>
-                                            <td className="p-2 border">{user.email}</td>
-                                            <td className="p-2 border">
-                                                <Link
-                                                    href={`/users/${user.id}/edit`}
-                                                    className="text-blue-600 hover:underline mr-4"
-                                                >
-                                                    Edit
-                                                </Link>
-                                                <button
-                                                    onClick={() => handleDelete(user.id)}
-                                                    className="text-red-600 hover:underline"
-                                                >
-                                                    Delete
-                                                </button>
+                                        <tr key={user.id} className="hover:bg-gray-50">
+                                            <td className="px-6 py-5 font-medium text-gray-900">{user.id}</td>
+                                            <td className="px-6 py-5 text-gray-900">{user.name}</td>
+                                            <td className="px-6 py-5 text-gray-900">{user.email}</td>
+                                            <td className="px-6 py-5 text-gray-900">{user.role}</td>
+                                            <td className="px-6 py-5 text-center">
+                                                <div className="flex gap-3 justify-center">
+                                                    <button
+                                                        onClick={() => router.visit(`/users/${user.id}/edit`)}
+                                                        className="flex flex-col items-center justify-center w-16 h-16 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+                                                    >
+                                                        <Pencil className="w-5 h-5" />
+                                                        <span className="text-xs mt-1">Edit</span>
+                                                    </button>
+
+                                                    <button
+                                                        onClick={() => handleDelete(user.id)}
+                                                        className="flex flex-col items-center justify-center w-16 h-16 bg-red-600 text-white rounded-md hover:bg-red-700 transition"
+                                                    >
+                                                        <Trash2 className="w-5 h-5" />
+                                                        <span className="text-xs mt-1">Delete</span>
+                                                    </button>
+                                                </div>
                                             </td>
                                         </tr>
                                     ))}
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
                 </div>
