@@ -1,16 +1,16 @@
-🛎️ AdminPanel - Laravel + Inertia + Tailwind CSS
+# 🛎️ AdminPanel - Laravel + Inertia + Tailwind CSS
 
 This is an internal management platform built with **Laravel**, **Inertia.js**, **React**, and **Tailwind CSS**, designed for touchscreen desktop systems. It features a modern responsive interface, user role management, and fast navigation optimized for internal operational workflows.
 
 ---
 
-📝 Description
+## 📝 Description
 
 This system was created to manage users, roles, rooms, and lockers in facilities that require fast and accessible interfaces for staff members. It focuses on providing a clean, visual, and efficient layout optimized for touchscreen use. The platform includes secure access, user creation with role selection, and a modular structure to extend functionality in the future.
 
 ---
 
-⚙️ Features
+## ⚙️ Features
 
 - ➕ Add, edit, and delete users with role selection  
 - 👤 Role-based user types (Manager, Clerk, Housekeeper, etc.)  
@@ -22,7 +22,7 @@ This system was created to manage users, roles, rooms, and lockers in facilities
 
 ---
 
-🧰 Technologies Used
+## 🧰 Technologies Used
 
 - 🌐 **Laravel 12**
 - ⚛️ **React + Inertia.js**
