@@ -1,8 +1,9 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import PrimaryButton from '@/Components/PrimaryButton';
-import { Head, router } from '@inertiajs/react';
+import { Head, router, usePage } from '@inertiajs/react';
 import { Pencil, Trash2, UserPlus } from 'lucide-react';
 import { Link } from '@inertiajs/react';
+import { CheckCircle } from 'lucide-react';
 
 export default function Index({ auth, users }) {
     const handleDelete = (id) => {
@@ -10,6 +11,9 @@ export default function Index({ auth, users }) {
             router.delete(`/users/${id}`);
         }
     };
+
+    const page = usePage();
+    const flash = page.props.flash || {};
 
     return (
         <AuthenticatedLayout
@@ -26,7 +30,15 @@ export default function Index({ auth, users }) {
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 bg-white">
 
-                            {/* Botón Add User */}
+                            {/* success */}
+                            {flash.success && (
+                                <div className="mb-6 flex items-start gap-3 rounded-md border border-green-200 bg-green-50 p-4 text-sm text-green-800">
+                                    <CheckCircle className="w-5 h-5 mt-0.5 text-green-600" />
+                                    <div>{flash.success}</div>
+                                </div>
+                            )}
+
+                            {/* Add User */}
                             <div className="mb-6">
                                 <Link
                                     href="/users/create"
@@ -36,8 +48,8 @@ export default function Index({ auth, users }) {
                                     Add User
                                 </Link>
                             </div>
-
-                            {/* Tabla de usuarios */}
+                            
+                            {/* Users list */}
                             <table className="min-w-full divide-y divide-gray-200">
                                 <thead className="bg-gray-100">
                                     <tr>
