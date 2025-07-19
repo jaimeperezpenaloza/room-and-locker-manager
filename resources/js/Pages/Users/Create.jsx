@@ -5,6 +5,8 @@ import TextInput from '@/Components/TextInput';
 import InputError from '@/Components/InputError';
 import PrimaryButton from '@/Components/PrimaryButton';
 import { useEffect } from 'react';
+import { Save } from 'lucide-react';
+
 
 export default function Create({ auth }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -112,9 +114,13 @@ export default function Create({ auth }) {
 
                             {/* Submit */}
                             <div className="flex justify-end">
-                                <PrimaryButton disabled={processing}>
-                                    Save
-                                </PrimaryButton>
+                                <button
+                                    type="submit"
+                                    className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-md text-white text-sm font-semibold transition"
+                                >
+                                    <Save className="w-5 h-5" />
+                                    Save User
+                                </button>
                             </div>
                         </form>
                     </div>

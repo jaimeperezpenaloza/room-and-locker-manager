@@ -32,12 +32,14 @@ export default function AuthenticatedLayout({ header, children }) {
                                 </NavLink>
                             </div>
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink
-                                    href={route('users.index')}
-                                    active={route().current('users.index')}
-                                >
-                                    Manage Users
-                                </NavLink>
+                                {['super_manager', 'manager'].includes(user.role) && (
+                                    <NavLink
+                                        href={route('users.index')}
+                                        active={route().current('users.index')}
+                                    >
+                                        Manage Users
+                                    </NavLink>
+                                )}                                
                             </div>
                         </div>
 

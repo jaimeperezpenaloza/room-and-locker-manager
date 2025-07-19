@@ -30,7 +30,7 @@ export default function Index({ auth, users }) {
                             <div className="mb-6">
                                 <Link
                                     href="/users/create"
-                                    className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 px-5 py-3 rounded-md text-white text-sm font-semibold transition"
+                                    className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-md text-white text-sm font-semibold transition"
                                 >
                                     <UserPlus className="w-5 h-5" />
                                     Add User
