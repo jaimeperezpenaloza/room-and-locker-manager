@@ -71,7 +71,7 @@ export default function Index({ auth, users }) {
                                                 <div className="flex gap-3 justify-center">
                                                     <button
                                                         onClick={() => router.visit(`/users/${user.id}/edit`)}
-                                                        className="flex flex-col items-center justify-center w-16 h-16 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+                                                        className="flex flex-col items-center justify-center w-16 h-16 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition"
                                                     >
                                                         <Pencil className="w-5 h-5" />
                                                         <span className="text-xs mt-1">Edit</span>

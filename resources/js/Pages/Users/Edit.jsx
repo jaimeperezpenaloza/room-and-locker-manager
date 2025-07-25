@@ -1,7 +1,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head, useForm } from '@inertiajs/react';
+import { Head, useForm, router } from '@inertiajs/react';
 import PrimaryButton from '@/Components/PrimaryButton';
-import { Save } from 'lucide-react';
+import { Save, ArrowLeft} from 'lucide-react';
 
 export default function Edit({ auth, user }) {
     const { data, setData, put, processing, errors } = useForm({
@@ -16,13 +16,23 @@ export default function Edit({ auth, user }) {
     };
 
     return (
-        <AuthenticatedLayout user={auth.user}>
+        <AuthenticatedLayout  user={auth.user}
+            header={<h2 className="text-xl font-semibold text-gray-800">Edit User</h2>}
+        >
             <Head title="Edit User" />
             <div className="py-12">
-                <div className="max-w-4xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white shadow-sm sm:rounded-lg p-6">
-                        <h2 className="text-2xl font-bold mb-6">Edit User</h2>
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+                    <div className="bg-white shadow-sm sm:rounded-lg">
+                        <form onSubmit={handleSubmit} className="p-6 space-y-6">
+                            <button
+                                
+                                type="button"
+                                onClick={() => router.visit('/users')}
+                                className="inline-flex items-center gap-2 bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md text-sm font-medium transition"
+                            >
+                                <ArrowLeft className="w-4 h-4" />
+                                Back
+                            </button>
                             <div>
                                 <label className="block font-medium text-sm text-gray-700">
                                     Name

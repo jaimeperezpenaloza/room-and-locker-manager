@@ -5,6 +5,8 @@ import TextInput from '@/Components/TextInput';
 import { Transition } from '@headlessui/react';
 import { useForm } from '@inertiajs/react';
 import { useRef } from 'react';
+import { Save } from 'lucide-react';
+
 
 export default function UpdatePasswordForm({ className = '' }) {
     const passwordInput = useRef();
@@ -122,7 +124,13 @@ export default function UpdatePasswordForm({ className = '' }) {
                 </div>
 
                 <div className="flex items-center gap-4">
-                    <PrimaryButton disabled={processing}>Save</PrimaryButton>
+                <PrimaryButton
+    disabled={processing}
+    className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-md text-white text-sm font-semibold transition"
+>
+    <Save className="w-4 h-4" />
+    Save
+</PrimaryButton>
 
                     <Transition
                         show={recentlySuccessful}

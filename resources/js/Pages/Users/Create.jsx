@@ -1,11 +1,11 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head, useForm } from '@inertiajs/react';
+import { Head, useForm, router } from '@inertiajs/react';
 import InputLabel from '@/Components/InputLabel';
 import TextInput from '@/Components/TextInput';
 import InputError from '@/Components/InputError';
 import PrimaryButton from '@/Components/PrimaryButton';
 import { useEffect } from 'react';
-import { Save } from 'lucide-react';
+import { Save, ArrowLeft } from 'lucide-react';
 
 
 export default function Create({ auth }) {
@@ -37,6 +37,15 @@ export default function Create({ auth }) {
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="bg-white shadow-sm sm:rounded-lg">
                         <form onSubmit={handleSubmit} className="p-6 space-y-6">
+                            <button
+                                
+                                type="button"
+                                onClick={() => router.visit('/users')}
+                                className="inline-flex items-center gap-2 bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md text-sm font-medium transition"
+                            >
+                                <ArrowLeft className="w-4 h-4" />
+                                Back
+                            </button>
                             {/* Name */}
                             <div>
                                 <InputLabel htmlFor="name" value="Name" />
